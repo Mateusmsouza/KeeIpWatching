@@ -1,10 +1,10 @@
 # kee_ip_watching
 
-A new Flutter application.
+A flutter application to keep watching for public ip changes.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+A flutter application to keep watching for public ip changes.
 
 A few resources to get you started if this is your first Flutter project:
 
