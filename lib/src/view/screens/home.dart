@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kee_ip_watching/src/controller/AddressController.dart';
+import 'package:kee_ip_watching/src/controller/AsynCheckerController.dart';
 
 class Home extends StatefulWidget {
 
@@ -24,15 +25,33 @@ class HomeState extends State<StatefulWidget> {
       return Scaffold(
           appBar: AppBar(
             title: Text("KeeIpWatching"),
+            centerTitle: true,
             leading: new Icon(Icons.network_check_sharp),
           ),
-          body: Center(
+          body: Container(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text("Your private IP right now is: ${AddressController.instanceModel.privateAddress}"),
-                Text("Your public IP right now is: ${AddressController.instanceModel.publicAddress}")
+                ListTile(
+                  title: Text("Public Internet Protocol",
+                      style: TextStyle(fontWeight: FontWeight.w500)),
+                  subtitle: Text(AddressController.instanceModel.publicAddress),
+                  leading: Icon(
+                      Icons.network_cell,
+                      color: Colors.deepPurple,
+                  ),
+                ),
+                Divider(),
+                ListTile(
+                  title: Text("Private Internet Protocol",
+                      style: TextStyle(fontWeight: FontWeight.w500)),
+                  subtitle: Text(AddressController.instanceModel.privateAddress),
+                  leading: Icon(
+                    Icons.network_locked,
+                    color: Colors.deepPurple,
+                  ),
+                )
               ],
             ),
           )
@@ -44,5 +63,6 @@ class HomeState extends State<StatefulWidget> {
   void initState() {
     super.initState();
     AddressController.instance.updateNetworkInformation();
+    main();
   }
 }
